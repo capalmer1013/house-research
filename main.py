@@ -7,7 +7,8 @@ import typer
 
 app = typer.Typer()
 
-csv_filename = "redfin_2023-02-16-16-44-41.csv"
+# csv_filename = "redfin_2023-02-16-16-44-41.csv"
+csv_filename = "redfin_all_pgh.csv"
 columns = [
     "SOLD DATE",
     "PROPERTY TYPE",
@@ -42,7 +43,7 @@ def test():
 
 @app.command()
 def plot():
-    houses.plot.scatter(x="DATE SOLD", y="DOLLAR PER SQUARE FEET", c="PRICE")
+    houses.plot.scatter(x="DATE SOLD", y="$/SQUARE FEET", c="PRICE")
     plt.gcf().autofmt_xdate()
     # houses
     # scatter_matrix(
