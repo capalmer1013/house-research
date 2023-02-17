@@ -1,4 +1,7 @@
 import pandas as pd
+import typer
+
+app = typer.Typer()
 
 csv_filename = "redfin_2023-02-16-16-44-41.csv"
 columns = [
@@ -18,8 +21,14 @@ columns = [
     "URL",
 ]
 houses = pd.read_csv(csv_filename)
-print(houses)
-print(houses.dtypes)
-print(houses.info())
-print("===================")
-print(houses[columns].info())
+
+@app.command()
+def test():
+    print(houses)
+    print(houses.dtypes)
+    print(houses.info())
+    print("===================")
+    print(houses[columns].info())
+
+if __name__ == "__main__":
+    app()
