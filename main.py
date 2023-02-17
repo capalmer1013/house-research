@@ -2,6 +2,7 @@ import datetime as dt
 import pandas as pd
 from pandas.plotting import scatter_matrix
 import matplotlib.pyplot as plt
+from sklearn import linear_model
 
 import typer
 
@@ -10,17 +11,18 @@ app = typer.Typer()
 # csv_filename = "redfin_2023-02-16-16-44-41.csv"
 csv_filename = "redfin_all_pgh.csv"
 columns = [
-    "SOLD DATE",
-    "PROPERTY TYPE",
-    "ADDRESS",
+    # "SOLD DATE",
+    # "PROPERTY TYPE",
+    # "ADDRESS",
     "PRICE",
     "BEDS",
     "BATHS",
     "SQUARE FEET",
     "LOT SIZE",
     "YEAR BUILT",
-    "DOLLAR PER SQUARE FEET",
-    "URL",
+    "$/SQUARE FEET",
+    # "DOLLAR PER SQUARE FEET",
+    # "URL",
 ]
 houses = pd.read_csv(csv_filename)
 
@@ -62,6 +64,11 @@ def plot():
     # )
     plt.show()
 
+@app.command()
+def linear():
+    reg = linear_model.LinearRegression()
+    reg.fit(houses["SQUARE FEET"], houses["PRICE"])
+    print(reg.coef_)
 
 if __name__ == "__main__":
     app()

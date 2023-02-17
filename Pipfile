@@ -9,6 +9,7 @@ black = "*"
 typer = {extras = ["all"], version = "*"}
 matplotlib = "*"
 scipy = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
