@@ -9,7 +9,8 @@ import typer
 app = typer.Typer()
 
 # csv_filename = "redfin_2023-02-16-16-44-41.csv"
-csv_filename = "redfin_all_pgh.csv"
+# csv_filename = "redfin_all_pgh.csv"
+csv_filename = "redfin_polish_hill.csv"
 columns = [
     # "SOLD DATE",
     # "PROPERTY TYPE",
@@ -20,8 +21,8 @@ columns = [
     "SQUARE FEET",
     "LOT SIZE",
     "YEAR BUILT",
-    "$/SQUARE FEET",
-    # "DOLLAR PER SQUARE FEET",
+    # "$/SQUARE FEET",
+    "DOLLAR PER SQUARE FEET",
     # "URL",
 ]
 houses = pd.read_csv(csv_filename)
@@ -45,23 +46,24 @@ def test():
 
 @app.command()
 def plot():
-    houses.plot.scatter(x="DATE SOLD", y="$/SQUARE FEET", c="PRICE")
+    # houses.plot.scatter(x="DATE SOLD", y="$/SQUARE FEET", c="PRICE")
     plt.gcf().autofmt_xdate()
-    # houses
-    # scatter_matrix(
-    #     houses[
-    #         [
-    #             "SQUARE FEET",
-    #             "PRICE",
-    #             "LOT SIZE",
-    #             "YEAR BUILT",
-    #             "DOLLAR PER SQUARE FEET",
-    #             # "new_sold_date",
-    #         ]
-    #     ],
-    #     figsize=(10, 10),
-    #     diagonal="kde",
-    # )
+    houses
+    scatter_matrix(
+        houses[
+            [
+                "SQUARE FEET",
+                "PRICE",
+                "LOT SIZE",
+                "YEAR BUILT",
+                # "$/SQUARE FEET",
+                "DOLLAR PER SQUARE FEET",
+                # "new_sold_date",
+            ]
+        ],
+        figsize=(10, 10),
+        diagonal="kde",
+    )
     plt.show()
 
 @app.command()
