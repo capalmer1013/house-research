@@ -10,6 +10,7 @@ typer = {extras = ["all"], version = "*"}
 matplotlib = "*"
 scipy = "*"
 scikit-learn = "*"
+pygwalker = "*"
 
 [dev-packages]
 
