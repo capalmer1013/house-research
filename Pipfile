@@ -11,6 +11,7 @@ matplotlib = "*"
 scipy = "*"
 scikit-learn = "*"
 pygwalker = "*"
+asciimatics = "*"
 
 [dev-packages]
 
